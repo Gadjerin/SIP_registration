@@ -52,10 +52,10 @@ class MainActivity : AppCompatActivity() {
         mViewModel.getRegistrationMessage().observe(this) {value -> mMessageText.text = value}
 
         mRegisterButton.setOnClickListener {
-            mRegisterButton.isEnabled = false
             val login = mLoginEdit.text.toString()
             val password = mPasswordEdit.text.toString()
             if (login.isNotEmpty() and password.isNotEmpty()) {
+                mRegisterButton.isEnabled = false
                 mViewModel.stopSession()
                 mViewModel.registration(login, password)
             }
